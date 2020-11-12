@@ -22,17 +22,17 @@ export class GeoFireClient {
   }
 
   /**
-   * Creates an object with a geohash. Save it to a field in Firestore to make geoqueries. 
+   * Creates an object with a geohash. Save it to a field in Firestore to make geoqueries.
    * @param  {number} latitude
    * @param  {number} longitude
    * @returns FirePoint
    */
   point(latitude: number, longitude: number): FirePoint {
     return {
-      geopoint: new (this.app as any).firestore.GeoPoint(
-        latitude,
-        longitude
-      ) as fb.firestore.GeoPoint,
+      geopoint: new this.app.firestore.GeoPoint(
+          latitude,
+          longitude
+      ),
       geohash: encode(latitude, longitude, 9)
     }
   }
